@@ -1,0 +1,43 @@
+{
+  "name": "xstream-extra-factories",
+  "version": "1.0.0",
+  "description": "Extra generic factories for xstream",
+  "main": "index.js",
+  "jsnext": {
+    "main": "dist-es2015/index.js"
+  },
+  "jspm": {
+    "directories": {
+      "lib": "dist-es2015"
+    },
+    "main": "index.js",
+    "format": "esm"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "dist"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc -p tsconfig.es2015.json && tsc -p tsconfig.json",
+    "version": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WorldMaker/xstream-extra-factories.git"
+  },
+  "author": "Max Battcher <me@worldmaker.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WorldMaker/xstream-extra-factories/issues"
+  },
+  "homepage": "https://github.com/WorldMaker/xstream-extra-factories#readme",
+  "devDependencies": {
+    "tslint": "^5.2.0",
+    "tslint-config-standard": "^5.0.2",
+    "typescript": "^2.3.2"
+  },
+  "dependencies": {
+    "xstream": "^10.7.0"
+  }
+}
