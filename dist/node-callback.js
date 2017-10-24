@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var xstream_1 = require("xstream");
-var NodeCallbackProducer = (function () {
+var NodeCallbackProducer = /** @class */ (function () {
     function NodeCallbackProducer(nodeFunction) {
         var rest = [];
         for (var _i = 1; _i < arguments.length; _i++) {

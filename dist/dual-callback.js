@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var xstream_1 = require("xstream");
-var DualCallbackProducer = (function () {
+var DualCallbackProducer = /** @class */ (function () {
     function DualCallbackProducer(fun) {
         var rest = [];
         for (var _i = 1; _i < arguments.length; _i++) {
@@ -21,7 +21,7 @@ var DualCallbackProducer = (function () {
     return DualCallbackProducer;
 }());
 exports.DualCallbackProducer = DualCallbackProducer;
-var CancellableDualCallbackProducer = (function () {
+var CancellableDualCallbackProducer = /** @class */ (function () {
     function CancellableDualCallbackProducer(fun, cancel) {
         var rest = [];
         for (var _i = 2; _i < arguments.length; _i++) {

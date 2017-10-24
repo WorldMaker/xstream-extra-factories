@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var xstream_1 = require("xstream");
-var ForeverProducer = (function () {
+var ForeverProducer = /** @class */ (function () {
     function ForeverProducer(item) {
         this.item = item;
     }
