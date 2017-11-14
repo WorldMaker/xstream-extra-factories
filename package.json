@@ -33,9 +33,10 @@
   },
   "homepage": "https://github.com/WorldMaker/xstream-extra-factories#readme",
   "devDependencies": {
-    "tslint": "^5.2.0",
-    "tslint-config-standard": "^5.0.2",
-    "typescript": "^2.3.2"
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "tslint-language-service": "^0.9.6",
+    "typescript": "^2.6.1"
   },
   "dependencies": {
     "xstream": "^10.7.0"

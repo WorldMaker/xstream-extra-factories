@@ -1,5 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var async_iterable_1 = require("./async-iterable");
+exports.fromAsyncIterable = async_iterable_1.fromAsyncIterable;
 var dual_callback_1 = require("./dual-callback");
 exports.fromCancellableDualCallback = dual_callback_1.fromCancellableDualCallback;
 exports.fromDualCallback = dual_callback_1.fromDualCallback;
