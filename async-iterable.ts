@@ -3,7 +3,7 @@ import xs, { Listener, Producer } from 'xstream'
 export class AsyncIterableProducer<T> implements Producer<T> {
     private cancel = false
 
-    constructor (private iterable: AsyncIterableIterator<T>) {}
+    constructor (private iterable: AsyncIterable<T>) {}
 
     async start (listener: Listener<T>) {
         try {
@@ -24,6 +24,6 @@ export class AsyncIterableProducer<T> implements Producer<T> {
     }
 }
 
-export function fromAsyncIterable<T> (iterable: AsyncIterableIterator<T>) {
+export function fromAsyncIterable<T> (iterable: AsyncIterable<T>) {
     return xs.create(new AsyncIterableProducer(iterable))
 }
