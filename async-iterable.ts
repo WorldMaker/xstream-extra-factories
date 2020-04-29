@@ -1,4 +1,4 @@
-import xs, { Listener, Producer } from 'xstream'
+import xs, { Listener, Producer, Stream } from 'xstream'
 
 export class AsyncIterableProducer<T> implements Producer<T> {
     private cancel = false
@@ -25,5 +25,5 @@ export class AsyncIterableProducer<T> implements Producer<T> {
 }
 
 export function fromAsyncIterable<T> (iterable: AsyncIterable<T>) {
-    return xs.create(new AsyncIterableProducer(iterable))
+    return xs.create(new AsyncIterableProducer(iterable)) as Stream<T>
 }

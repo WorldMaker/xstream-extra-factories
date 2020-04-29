@@ -1,4 +1,4 @@
-import xs, { Listener, Producer } from 'xstream';
+import { Listener, Producer, Stream } from 'xstream';
 export declare type NodeCallback<T> = (err: any, value: T) => void;
 export declare type NodeFunction<T> = (...rest: (any | NodeCallback<T>)[]) => void;
 export declare class NodeCallbackProducer<T> implements Producer<T> {
@@ -13,4 +13,4 @@ export declare class NodeCallbackProducer<T> implements Producer<T> {
  * function takes any number of arguments and then lastly a callback of the
  * form (error: any, value: T) => void.
  */
-export declare function fromNodeCallback<T>(nodeFunction: NodeFunction<T>, ...rest: any[]): xs<T>;
+export declare function fromNodeCallback<T>(nodeFunction: NodeFunction<T>, ...rest: any[]): Stream<T>;

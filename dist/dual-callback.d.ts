@@ -1,4 +1,4 @@
-import xs, { Listener, Producer } from 'xstream';
+import { Listener, Producer, Stream } from 'xstream';
 export declare type DualCallbackFunction<T, TReturn> = (success: (value: T) => void, error: (error: any) => void, ...rest: any[]) => TReturn;
 export declare class DualCallbackProducer<T> implements Producer<T> {
     private fun;
@@ -20,10 +20,10 @@ export declare class CancellableDualCallbackProducer<T> implements Producer<T> {
  * Creates a stream from a function that expects a success callback, an error callback, then any
  * number of arguments following that. An example would be navigator.geolocation.getPosition().
  */
-export declare function fromDualCallback<T>(fun: DualCallbackFunction<T, void>, ...rest: any[]): xs<T>;
+export declare function fromDualCallback<T>(fun: DualCallbackFunction<T, void>, ...rest: any[]): Stream<T>;
 /**
  * Creates a stream from a "watch" function that expects a success callback, an error callback,
  * any number of arguments following that, then returns an ID for cancellation. An example would
  * be navigator.geolocation.watchPosition().
  */
-export declare function fromCancellableDualCallback<T>(fun: DualCallbackFunction<T, number>, cancel: (cancelId: number) => void, ...rest: any[]): xs<T>;
+export declare function fromCancellableDualCallback<T>(fun: DualCallbackFunction<T, number>, cancel: (cancelId: number) => void, ...rest: any[]): Stream<T>;

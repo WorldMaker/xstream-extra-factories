@@ -17,6 +17,7 @@ export class CancellableDualCallbackProducer {
         this.fun = fun;
         this.cancel = cancel;
         this.rest = rest;
+        this.cancelId = -1;
     }
     start(listener) {
         this.cancelId = this.fun(listener.next.bind(listener), listener.error.bind(listener), ...this.rest);

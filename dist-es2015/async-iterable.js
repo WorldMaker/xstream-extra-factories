@@ -6,10 +6,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __asyncValues = (this && this.__asyncIterator) || function (o) {
+var __asyncValues = (this && this.__asyncValues) || function (o) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator];
-    return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
 import xs from 'xstream';
 export class AsyncIterableProducer {
@@ -19,10 +21,11 @@ export class AsyncIterableProducer {
     }
     start(listener) {
         return __awaiter(this, void 0, void 0, function* () {
+            var e_1, _a;
             try {
                 try {
-                    for (var _a = __asyncValues(this.iterable), _b; _b = yield _a.next(), !_b.done;) {
-                        let item = yield _b.value;
+                    for (var _b = __asyncValues(this.iterable), _c; _c = yield _b.next(), !_c.done;) {
+                        let item = _c.value;
                         listener.next(item);
                         if (this.cancel) {
                             break;
@@ -32,7 +35,7 @@ export class AsyncIterableProducer {
                 catch (e_1_1) { e_1 = { error: e_1_1 }; }
                 finally {
                     try {
-                        if (_b && !_b.done && (_c = _a.return)) yield _c.call(_a);
+                        if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
                     }
                     finally { if (e_1) throw e_1.error; }
                 }
@@ -41,7 +44,6 @@ export class AsyncIterableProducer {
             catch (err) {
                 listener.error(err);
             }
-            var e_1, _c;
         });
     }
     stop() {

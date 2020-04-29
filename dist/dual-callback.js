@@ -50,6 +50,7 @@ var CancellableDualCallbackProducer = /** @class */ (function () {
         this.fun = fun;
         this.cancel = cancel;
         this.rest = rest;
+        this.cancelId = -1;
     }
     CancellableDualCallbackProducer.prototype.start = function (listener) {
         this.cancelId = this.fun.apply(this, __spread([listener.next.bind(listener),

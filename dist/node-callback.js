@@ -34,7 +34,6 @@ var NodeCallbackProducer = /** @class */ (function () {
         this.nodeFunction.apply(this, __spread(this.rest, [function (err, value) {
                 if (err) {
                     listener.error(err);
-                    listener.complete();
                     return;
                 }
                 listener.next(value);

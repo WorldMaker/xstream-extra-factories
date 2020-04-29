@@ -8,7 +8,6 @@ export class NodeCallbackProducer {
         this.nodeFunction(...this.rest, (err, value) => {
             if (err) {
                 listener.error(err);
-                listener.complete();
                 return;
             }
             listener.next(value);
