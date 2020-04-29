@@ -14,8 +14,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -34,10 +34,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __asyncValues = (this && this.__asyncIterator) || function (o) {
+var __asyncValues = (this && this.__asyncValues) || function (o) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator];
-    return m ? m.call(o) : typeof __values === "function" ? __values(o) : o[Symbol.iterator]();
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var xstream_1 = require("xstream");
@@ -48,53 +50,51 @@ var AsyncIterableProducer = /** @class */ (function () {
     }
     AsyncIterableProducer.prototype.start = function (listener) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, _b, item, e_1_1, err_1, e_1, _c;
+            var e_1, _a, _b, _c, item, e_1_1, err_1;
             return __generator(this, function (_d) {
                 switch (_d.label) {
                     case 0:
-                        _d.trys.push([0, 14, , 15]);
+                        _d.trys.push([0, 13, , 14]);
                         _d.label = 1;
                     case 1:
-                        _d.trys.push([1, 7, 8, 13]);
-                        _a = __asyncValues(this.iterable);
+                        _d.trys.push([1, 6, 7, 12]);
+                        _b = __asyncValues(this.iterable);
                         _d.label = 2;
-                    case 2: return [4 /*yield*/, _a.next()];
+                    case 2: return [4 /*yield*/, _b.next()];
                     case 3:
-                        if (!(_b = _d.sent(), !_b.done)) return [3 /*break*/, 6];
-                        return [4 /*yield*/, _b.value];
-                    case 4:
-                        item = _d.sent();
+                        if (!(_c = _d.sent(), !_c.done)) return [3 /*break*/, 5];
+                        item = _c.value;
                         listener.next(item);
                         if (this.cancel) {
-                            return [3 /*break*/, 6];
+                            return [3 /*break*/, 5];
                         }
-                        _d.label = 5;
-                    case 5: return [3 /*break*/, 2];
-                    case 6: return [3 /*break*/, 13];
-                    case 7:
+                        _d.label = 4;
+                    case 4: return [3 /*break*/, 2];
+                    case 5: return [3 /*break*/, 12];
+                    case 6:
                         e_1_1 = _d.sent();
                         e_1 = { error: e_1_1 };
-                        return [3 /*break*/, 13];
+                        return [3 /*break*/, 12];
+                    case 7:
+                        _d.trys.push([7, , 10, 11]);
+                        if (!(_c && !_c.done && (_a = _b.return))) return [3 /*break*/, 9];
+                        return [4 /*yield*/, _a.call(_b)];
                     case 8:
-                        _d.trys.push([8, , 11, 12]);
-                        if (!(_b && !_b.done && (_c = _a.return))) return [3 /*break*/, 10];
-                        return [4 /*yield*/, _c.call(_a)];
-                    case 9:
                         _d.sent();
-                        _d.label = 10;
-                    case 10: return [3 /*break*/, 12];
-                    case 11:
+                        _d.label = 9;
+                    case 9: return [3 /*break*/, 11];
+                    case 10:
                         if (e_1) throw e_1.error;
                         return [7 /*endfinally*/];
-                    case 12: return [7 /*endfinally*/];
-                    case 13:
+                    case 11: return [7 /*endfinally*/];
+                    case 12:
                         listener.complete();
-                        return [3 /*break*/, 15];
-                    case 14:
+                        return [3 /*break*/, 14];
+                    case 13:
                         err_1 = _d.sent();
                         listener.error(err_1);
-                        return [3 /*break*/, 15];
-                    case 15: return [2 /*return*/];
+                        return [3 /*break*/, 14];
+                    case 14: return [2 /*return*/];
                 }
             });
         });

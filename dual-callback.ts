@@ -1,4 +1,4 @@
-import xs, { Listener, Producer } from 'xstream'
+import xs, { Listener, Producer, Stream } from 'xstream'
 
 export type DualCallbackFunction<T, TReturn> = (success: (value: T) => void,
                                                 error: (error: any) => void,
@@ -31,6 +31,7 @@ export class CancellableDualCallbackProducer<T> implements Producer<T> {
                  private cancel: (cancelId: number) => void,
                  ...rest: any[]) {
         this.rest = rest
+        this.cancelId = -1
     }
 
     start (listener: Listener<T>) {
@@ -49,7 +50,7 @@ export class CancellableDualCallbackProducer<T> implements Producer<T> {
  * number of arguments following that. An example would be navigator.geolocation.getPosition().
  */
 export function fromDualCallback<T> (fun: DualCallbackFunction<T, void>, ...rest: any[]) {
-    return xs.create(new DualCallbackProducer(fun, ...rest))
+    return xs.create(new DualCallbackProducer(fun, ...rest)) as Stream<T>
 }
 
 /**
@@ -60,5 +61,5 @@ export function fromDualCallback<T> (fun: DualCallbackFunction<T, void>, ...rest
 export function fromCancellableDualCallback<T> (fun: DualCallbackFunction<T, number>,
                                                 cancel: (cancelId: number) => void,
                                                 ...rest: any[]) {
-    return xs.create(new CancellableDualCallbackProducer(fun, cancel, ...rest))
+    return xs.create(new CancellableDualCallbackProducer(fun, cancel, ...rest)) as Stream<T>
 }
