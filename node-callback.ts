@@ -14,7 +14,6 @@ export class NodeCallbackProducer<T> implements Producer<T> {
         this.nodeFunction(...this.rest, (err: any, value: T) => {
             if (err) {
                 listener.error(err)
-                listener.complete()
                 return
             }
             listener.next(value)
